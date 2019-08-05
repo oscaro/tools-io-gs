@@ -8,6 +8,8 @@ Google Storage support for [`tools.io`](https://github.com/oscaro/tools-io).
 [com.oscaro/tools-io-gs  "0.1.5"]
 ```
 
+[API Docs](https://cljdoc.org/d/com.oscaro/tools-io-gs/0.1.5/doc/readme).
+
 ### Example
 
 ```clojure
@@ -33,3 +35,10 @@ Google Storage support for [`tools.io`](https://github.com/oscaro/tools-io).
 ; -> output:
 ; gs://bucket/mydir/example/
 ```
+
+## License
+
+Copyright © 2016-2019 Oscaro.com
+
+Distributed under the Eclipse Public License either version 1.0 or (at your
+option) any later version.
