@@ -44,9 +44,9 @@
          :or   {encoding  "UTF-8"
                 mime-type "text/plain"}} options]
     {:stream (-> (gs/create-blob-writer
-                   (mk-client options)
-                   (gs/blob-info (gs/->blob-id filename) {:content-encoding encoding
-                                                          :content-type     mime-type}))
+                  (mk-client options)
+                  (gs/blob-info (gs/->blob-id filename) {:content-encoding encoding
+                                                         :content-type     mime-type}))
                  gs/->output-stream)}))
 
 (defmethod list-files :gs
@@ -56,14 +56,9 @@
               (let [{:keys [blob-id]} (->clj blob)]
                 (str "gs://" (:bucket blob-id) "/" (:name blob-id)))))))
 
-  [path & [options]]
-  (->> (gs/ls (mk-client options) path (or options {:delimiter "/"}))
-       (map (fn [blob]
-              (let [{:keys [blob-id]} (->clj blob)]
-                (str "gs://" (:bucket blob-id) "/" (:name blob-id)))))))
-
 (defmethod list-dirs :gs
-(->> (gs/ls (mk-client options) (str path "/")
+  [path & [options]]
+  (->> (gs/ls (mk-client options) (str path "/")
               (or options {:current-directory "/"}))
        (map (fn [blob]
               (let [{:keys [blob-id]} (->clj blob)]
