@@ -5,7 +5,7 @@ Google Storage support for [`tools.io`](https://github.com/oscaro/tools-io).
 ## Usage
 
 ```clojure
-[com.oscaro/tools-io-gs  "0.1.5"]
+[com.oscaro/tools-io-gs  "0.1.6"]
 ```
 
 ### Example
@@ -18,6 +18,10 @@ Google Storage support for [`tools.io`](https://github.com/oscaro/tools-io).
 ; list files
 (doseq [filename (list-files "gs://bucket/mydir/")]
   (println filename))
+
+; list dirs
+(->> (list-dirs "gs://bucket/dir")
+     count)
 
 ; -> output:
 ; gs://bucket/mydir/example/raw-animals-aaaaaaaaaa.jsons.gz
@@ -32,4 +36,5 @@ Google Storage support for [`tools.io`](https://github.com/oscaro/tools-io).
 
 ; -> output:
 ; gs://bucket/mydir/example/
+
 ```

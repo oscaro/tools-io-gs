@@ -5,7 +5,8 @@
             [tools.io.core :refer [register-file-pred!
                                    mk-input-stream
                                    mk-output-stream
-                                   list-files]])
+                                   list-files
+                                   list-dirs]])
   (:import (java.io FileNotFoundException)))
 
 (defn- gs-file?
@@ -51,6 +52,19 @@
 (defmethod list-files :gs
   [path & [options]]
   (->> (gs/ls (mk-client options) path (or options {}))
+       (map (fn [blob]
+              (let [{:keys [blob-id]} (->clj blob)]
+                (str "gs://" (:bucket blob-id) "/" (:name blob-id)))))))
+
+  [path & [options]]
+  (->> (gs/ls (mk-client options) path (or options {:delimiter "/"}))
+       (map (fn [blob]
+              (let [{:keys [blob-id]} (->clj blob)]
+                (str "gs://" (:bucket blob-id) "/" (:name blob-id)))))))
+
+(defmethod list-dirs :gs
+(->> (gs/ls (mk-client options) (str path "/")
+              (or options {:current-directory "/"}))
        (map (fn [blob]
               (let [{:keys [blob-id]} (->clj blob)]
                 (str "gs://" (:bucket blob-id) "/" (:name blob-id)))))))
