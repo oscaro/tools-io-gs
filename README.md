@@ -8,8 +8,6 @@ Google Storage support for [`tools.io`](https://github.com/oscaro/tools-io).
 
 [![cljdoc badge](https://cljdoc.org/badge/com.oscaro/tools-io-gs)](https://cljdoc.org/d/com.oscaro/tools-io-gs/CURRENT)
 
-[API Docs](https://cljdoc.org/d/com.oscaro/tools-io-gs/0.1.5/doc/readme).
-
 ### Example
 
 ```clojure
