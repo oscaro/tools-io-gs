@@ -4,16 +4,14 @@ Google Storage support for [`tools.io`](https://github.com/oscaro/tools-io).
 
 ## Usage
 
-```clojure
-[com.oscaro/tools-io-gs  "0.1.6"]
-```
+[![Clojars Project](https://img.shields.io/clojars/v/com.oscaro/tools-io-gs.svg)](https://clojars.org/com.oscaro/tools-io-gs)
 
-[API Docs](https://cljdoc.org/d/com.oscaro/tools-io-gs/0.1.5/doc/readme).
+[![cljdoc badge](https://cljdoc.org/badge/com.oscaro/tools-io-gs)](https://cljdoc.org/d/com.oscaro/tools-io-gs/CURRENT)
 
 ### Example
 
 ```clojure
-;read json
+; read json
 (doseq [x (read-jsons-file "gs://bucket/sample.jsons.gz")]
   (println x))
 
@@ -43,7 +41,7 @@ Google Storage support for [`tools.io`](https://github.com/oscaro/tools-io).
 
 ## License
 
-Copyright © 2016-2019 Oscaro.com
+Copyright © 2016-2021 Oscaro.com
 
 Distributed under the Eclipse Public License either version 1.0 or (at your
 option) any later version.
