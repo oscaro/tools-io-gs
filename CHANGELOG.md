@@ -1,7 +1,7 @@
 # oscaro/tools-io-gs Changelog
 
 ## [Unreleased]
-
+- added `list-dirs` implementation
 
 ## [0.1.6] - 2021-08-19
 * bump clojure, tools-io, clj-gcloud-storage, tools.namespace

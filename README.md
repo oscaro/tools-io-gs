@@ -30,6 +30,10 @@ Google Storage support for [`tools.io`](https://github.com/oscaro/tools-io).
 (doseq [filename (list-files "gs://bucket/mydir/" {:current-directory true})]
   (println filename))
 
+; list dirs
+(->> (list-dirs "gs://bucket/dir")
+     count)
+
 ; -> output:
 ; gs://bucket/mydir/example/
 ```
