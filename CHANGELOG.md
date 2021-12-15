@@ -1,5 +1,7 @@
 # oscaro/tools-io-gs Changelog
 
+## [Unreleased]
+
 ## [0.1.7] - 2021-12-15
 * added `list-dirs` implementation
 
