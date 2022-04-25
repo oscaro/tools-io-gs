@@ -1,6 +1,6 @@
 # oscaro/tools-io-gs Changelog
 
-## [Unreleased]
+## [0.1.8] - 2022-04-25
 * bump clojure (1.11.1), tools-io, clj-gcloud-storage.
 
 ## [0.1.7] - 2021-12-15
@@ -12,7 +12,8 @@
 ## [0.1.5] - 2019-05-16
 * First public release.
 
-[Unreleased]: https://github.com/oscaro/tools-io-gs/-/compare/0.1.7...master
+[Unreleased]: https://github.com/oscaro/tools-io-gs/-/compare/0.1.8...master
+[0.1.8]: https://github.com/oscaro/tools-io-gs/-/compare/0.1.7...0.1.8
 [0.1.7]: https://github.com/oscaro/tools-io-gs/-/compare/0.1.6...0.1.7
 [0.1.6]: https://github.com/oscaro/tools-io-gs/-/compare/0.1.5...0.1.6
 [0.1.5]: https://github.com/oscaro/tools-io-gs/releases/tag/0.1.5
