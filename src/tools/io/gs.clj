@@ -1,12 +1,13 @@
 (ns tools.io.gs
-  (:require [clojure.string :as str]
-            [clj-gcloud.storage :as gs]
-            [clj-gcloud.coerce :refer [->clj]]
-            [tools.io.core :refer [register-file-pred!
-                                   mk-input-stream
-                                   mk-output-stream
-                                   list-files
-                                   list-dirs]])
+  (:require
+   [clj-gcloud.coerce :refer [->clj]]
+   [clj-gcloud.storage :as gs]
+   [clojure.string :as str]
+   [tools.io.core :refer [register-file-pred!
+                          mk-input-stream
+                          mk-output-stream
+                          list-files
+                          list-dirs]])
   (:import (java.io FileNotFoundException)))
 
 (defn- gs-file?
