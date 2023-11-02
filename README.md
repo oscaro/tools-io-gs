@@ -1,12 +1,12 @@
-# tools-io-gs
+# tools-io-gs [API Docs](https://cljdoc.org/d/com.oscaro/tools-io-gs/0.1.6/doc/readme) [![cljdoc badge](https://cljdoc.org/badge/com.oscaro/tools-io-gs)](https://cljdoc.org/d/com.oscaro/tools-io-gs/CURRENT)
 
 Google Storage support for [`tools.io`](https://github.com/oscaro/tools-io).
 
 ## Usage
 
-[![Clojars Project](https://img.shields.io/clojars/v/com.oscaro/tools-io-gs.svg)](https://clojars.org/com.oscaro/tools-io-gs)
-
-[![cljdoc badge](https://cljdoc.org/badge/com.oscaro/tools-io-gs)](https://cljdoc.org/d/com.oscaro/tools-io-gs/CURRENT)
+```clojure
+[com.oscaro/tools-io-gs  "0.X.X"] ; See (clojars release)
+```
 
 ### Example
 
@@ -36,6 +36,11 @@ Google Storage support for [`tools.io`](https://github.com/oscaro/tools-io).
 
 ; -> output:
 ; gs://bucket/mydir/example/
+
+; Get folder/file size
+
+(sizeof "gs:/foo/bar") ;; => 8293
+
 ```
 
 ## License
