@@ -1,4 +1,4 @@
-(defproject com.oscaro/tools-io-gs "0.1.14-SNAPSHOT"
+(defproject com.oscaro/tools-io-gs "0.1.15-SNAPSHOT"
   :description "google storage support for tools-io"
   :url "https://github.com/oscaro/tools-io-gs"
   :license {:name "Eclipse Public License"
