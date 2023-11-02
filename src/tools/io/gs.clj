@@ -6,6 +6,7 @@
                                    mk-input-stream
                                    mk-output-stream
                                    list-files
+                                   list-dirs
                                    sizeof]])
   (:import java.io.FileNotFoundException
            com.google.cloud.storage.Blob))
