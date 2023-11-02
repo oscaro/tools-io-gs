@@ -10,6 +10,7 @@
   (:import java.io.FileNotFoundException
            com.google.cloud.storage.Blob))
 
+
 (defn- gs-file?
   [path]
   (str/starts-with? (str/lower-case (str path)) "gs://"))
@@ -61,6 +62,17 @@
        (map (fn [blob]
               (let [{:keys [blob-id]} (->clj blob)]
                 (str "gs://" (:bucket blob-id) "/" (:name blob-id)))))))
+
+
+(defmethod list-dirs :gs
+  [path & [options]]
+  (let [directory (if (= (-> path seq last) \/) path
+                    (str path "/"))]
+    (->> (gs/ls (mk-client options) directory
+                (or options {:current-directory "/"}))
+       (map (fn [blob]
+              (let [{:keys [blob-id]} (->clj blob)]
+                (str "gs://" (:bucket blob-id) "/" (:name blob-id))))))))
 
 
 (defmethod sizeof :gs

@@ -1,4 +1,4 @@
-# tools-io-gs
+# tools-io-gs [API Docs](https://cljdoc.org/d/com.oscaro/tools-io-gs/0.1.6/doc/readme) [![cljdoc badge](https://cljdoc.org/badge/com.oscaro/tools-io-gs)](https://cljdoc.org/d/com.oscaro/tools-io-gs/CURRENT)
 
 Google Storage support for [`tools.io`](https://github.com/oscaro/tools-io).
 
@@ -8,12 +8,10 @@ Google Storage support for [`tools.io`](https://github.com/oscaro/tools-io).
 [com.oscaro/tools-io-gs  "0.X.X"] ; See (clojars release)
 ```
 
-[API Docs](https://cljdoc.org/d/com.oscaro/tools-io-gs/0.1.6/doc/readme).
-
 ### Example
 
 ```clojure
-;read json
+; read json
 (doseq [x (read-jsons-file "gs://bucket/sample.jsons.gz")]
   (println x))
 
@@ -31,6 +29,10 @@ Google Storage support for [`tools.io`](https://github.com/oscaro/tools-io).
 ; list files in a (virtual) directory
 (doseq [filename (list-files "gs://bucket/mydir/" {:current-directory true})]
   (println filename))
+
+; list dirs
+(->> (list-dirs "gs://bucket/dir")
+     count)
 
 ; -> output:
 ; gs://bucket/mydir/example/
