@@ -5,10 +5,10 @@ Google Storage support for [`tools.io`](https://github.com/oscaro/tools-io).
 ## Usage
 
 ```clojure
-[com.oscaro/tools-io-gs  "0.1.5"]
+[com.oscaro/tools-io-gs  "0.X.X"] ; See (clojars release)
 ```
 
-[API Docs](https://cljdoc.org/d/com.oscaro/tools-io-gs/0.1.5/doc/readme).
+[API Docs](https://cljdoc.org/d/com.oscaro/tools-io-gs/0.1.6/doc/readme).
 
 ### Example
 
@@ -34,11 +34,16 @@ Google Storage support for [`tools.io`](https://github.com/oscaro/tools-io).
 
 ; -> output:
 ; gs://bucket/mydir/example/
+
+; Get folder/file size
+
+(sizeof "gs:/foo/bar") ;; => 8293
+
 ```
 
 ## License
 
-Copyright © 2016-2019 Oscaro.com
+Copyright © 2016-2023 Oscaro.com
 
 Distributed under the Eclipse Public License either version 1.0 or (at your
 option) any later version.

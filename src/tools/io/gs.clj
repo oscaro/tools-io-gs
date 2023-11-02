@@ -5,17 +5,21 @@
             [tools.io.core :refer [register-file-pred!
                                    mk-input-stream
                                    mk-output-stream
-                                   list-files]])
-  (:import (java.io FileNotFoundException)))
+                                   list-files
+                                   sizeof]])
+  (:import java.io.FileNotFoundException
+           com.google.cloud.storage.Blob))
 
 (defn- gs-file?
   [path]
   (str/starts-with? (str/lower-case (str path)) "gs://"))
 
+
 (defn mk-client
   "Make storage client from option map"
   [{:keys [storage] :as options}]
   (or storage (gs/init options)))
+
 
 (register-file-pred! :gs gs-file?)
 
@@ -24,6 +28,7 @@
   (try
     (gs/->blob-id uri)
     (catch NullPointerException _ nil)))
+
 
 (defmethod mk-input-stream :gs
   [filename & [options]]
@@ -36,6 +41,7 @@
       {:stream stream}
       (throw (FileNotFoundException. filename)))))
 
+
 (defmethod mk-output-stream :gs
   [filename & [options]]
   (let [{:keys [encoding
@@ -43,10 +49,11 @@
          :or   {encoding  "UTF-8"
                 mime-type "text/plain"}} options]
     {:stream (-> (gs/create-blob-writer
-                   (mk-client options)
-                   (gs/blob-info (gs/->blob-id filename) {:content-encoding encoding
-                                                          :content-type     mime-type}))
+                  (mk-client options)
+                  (gs/blob-info (gs/->blob-id filename) {:content-encoding encoding
+                                                         :content-type     mime-type}))
                  gs/->output-stream)}))
+
 
 (defmethod list-files :gs
   [path & [options]]
@@ -54,3 +61,10 @@
        (map (fn [blob]
               (let [{:keys [blob-id]} (->clj blob)]
                 (str "gs://" (:bucket blob-id) "/" (:name blob-id)))))))
+
+
+(defmethod sizeof :gs
+  [path & [options]]
+  (->> (gs/ls (mk-client options) path (or options {}))
+       (reduce (fn [acc ^Blob blob]
+                 (+ acc (.getSize blob))) 0)))
