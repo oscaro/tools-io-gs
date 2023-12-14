@@ -5,6 +5,7 @@
 ### Added
 
 ### Changed
+* bump clj-gcloud-storage, tools-io.
 
 ### Fixed
 
