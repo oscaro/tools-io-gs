@@ -1,11 +1,11 @@
-(defproject com.oscaro/tools-io-gs "0.1.15"
+(defproject com.oscaro/tools-io-gs "0.1.16-SNAPSHOT"
   :description "google storage support for tools-io"
   :url "https://github.com/oscaro/tools-io-gs"
   :license {:name "Eclipse Public License"
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.11.1"]
-                 [com.oscaro/clj-gcloud-storage "0.199-1.0"]
-                 [com.oscaro/tools-io "0.3.35"]]
+                 [com.oscaro/clj-gcloud-storage "0.209-1.0"]
+                 [com.oscaro/tools-io "0.3.36"]]
   :deploy-repositories [["snapshots" {:url "https://clojars.org/repo"
                                       :username :env/clojars_username
                                       :password :env/clojars_password
