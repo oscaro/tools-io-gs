@@ -5,7 +5,7 @@ Google Storage support for [`tools.io`](https://github.com/oscaro/tools-io).
 ## Usage
 
 ```clojure
-[com.oscaro/tools-io-gs  "0.X.X"] ; See (clojars release)
+[com.oscaro/tools-io-gs  "0.1.17"]
 ```
 
 ### Example
