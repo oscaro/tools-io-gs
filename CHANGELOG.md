@@ -5,13 +5,14 @@
 ### Added
 
 ### Changed
+* Bump clj-gcloud-storage 0.215-1.0, tools.io 0.3.38.
 
 ### Fixed
 
 
 ## [0.1.16] - 2023-11-03
 ### Changed
-* Bump clj-gcloud-storate 0.209.1-0, tools.io 0.3.36.
+* Bump clj-gcloud-storage 0.209.1-0, tools.io 0.3.36.
 
 ## [0.1.15] - 2023-11-03
 ### Changed
