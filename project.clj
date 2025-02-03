@@ -3,9 +3,9 @@
   :url "https://github.com/oscaro/tools-io-gs"
   :license {:name "Eclipse Public License"
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.11.3"]
-                 [com.oscaro/clj-gcloud-storage "0.215-1.0"]
-                 [com.oscaro/tools-io "0.3.38"]]
+  :dependencies [[org.clojure/clojure "1.11.4"]
+                 [com.oscaro/clj-gcloud-storage "0.234-1.0"]
+                 [com.oscaro/tools-io "0.3.40"]]
   :deploy-repositories [["snapshots" {:url "https://clojars.org/repo"
                                       :username :env/clojars_username
                                       :password :env/clojars_password
@@ -25,4 +25,4 @@
   :plugins [[lein-shell "0.5.0"]]
   :profiles {:dev {:global-vars    {*warn-on-reflection* true}
                    :plugins        [[lein-codox "0.10.2"]]
-                   :dependencies   [[org.clojure/tools.namespace "1.4.4"]]}})
+                   :dependencies   [[org.clojure/tools.namespace "1.5.0"]]}})
