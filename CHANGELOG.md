@@ -1,14 +1,8 @@
 # oscaro/tools-io-gs Changelog
 
-## [Unreleased]
-
-### Added
-
+## [0.1.19] - 2025-04-18
 ### Changed
 * Bump clj-gcloud-storage 0.240-1.0, tools-io 0.3.41.
-
-### Fixed
-
 
 ## [0.1.18] - 2025-02-03
 ### Changed
@@ -59,7 +53,8 @@
 ## [0.1.5] - 2019-05-16
 * First public release.
 
-[Unreleased]: https://github.com/oscaro/tools-io-gs/-/compare/0.1.18...devel
+[Unreleased]: https://github.com/oscaro/tools-io-gs/-/compare/0.1.19...devel
+[0.1.19]: https://github.com/oscaro/tools-io-gs/-/compare/0.1.18...0.1.19
 [0.1.18]: https://github.com/oscaro/tools-io-gs/-/compare/0.1.17...0.1.18
 [0.1.17]: https://github.com/oscaro/tools-io-gs/-/compare/0.1.16...0.1.17
 [0.1.16]: https://github.com/oscaro/tools-io-gs/-/compare/0.1.15...0.1.16
