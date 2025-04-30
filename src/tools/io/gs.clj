@@ -48,13 +48,20 @@
 (defmethod mk-output-stream :gs
   [filename & [options]]
   (let [{:keys [encoding
-                mime-type]
+                mime-type
+                content-disposition
+                cache-control
+                content-language]
          :or   {encoding  "UTF-8"
-                mime-type "text/plain"}} options]
+                mime-type "text/plain"}} options
+        option-map (cond-> {:content-encoding encoding
+                            :content-type     mime-type}
+                     content-disposition (assoc :content-disposition content-disposition)
+                     content-language (assoc :content-language content-language)
+                     cache-control (assoc :cache-control cache-control))]
     {:stream (-> (gs/create-blob-writer
                   (mk-client options)
-                  (gs/blob-info (gs/->blob-id filename) {:content-encoding encoding
-                                                         :content-type     mime-type}))
+                  (gs/blob-info (gs/->blob-id filename) option-map))
                  gs/->output-stream)}))
 
 
