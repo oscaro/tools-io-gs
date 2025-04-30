@@ -5,6 +5,7 @@
 ### Added
 
 ### Changed
+* More options are avaiable for output streams (`content-disposition`, `cache-control` & `content-language`)
 
 ### Fixed
 
