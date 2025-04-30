@@ -5,10 +5,14 @@
 ### Added
 
 ### Changed
-* More options are avaiable for output streams (`content-disposition`, `cache-control` & `content-language`)
+
 
 ### Fixed
 
+
+## [0.1.20] - 2025-04-30
+### Changed
+* More options are avaiable for output streams (`content-disposition`, `cache-control` & `content-language`)
 
 ## [0.1.19] - 2025-04-18
 ### Changed
