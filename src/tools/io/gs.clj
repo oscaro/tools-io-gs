@@ -51,14 +51,16 @@
                 mime-type
                 content-disposition
                 cache-control
-                content-language]
+                content-language
+                metadata]
          :or   {encoding  "UTF-8"
                 mime-type "text/plain"}} options
         option-map (cond-> {:content-encoding encoding
                             :content-type     mime-type}
                      content-disposition (assoc :content-disposition content-disposition)
-                     content-language (assoc :content-language content-language)
-                     cache-control (assoc :cache-control cache-control))]
+                     content-language    (assoc :content-language content-language)
+                     cache-control       (assoc :cache-control cache-control)
+                     metadata            (assoc :metadata metadata))]
     {:stream (-> (gs/create-blob-writer
                   (mk-client options)
                   (gs/blob-info (gs/->blob-id filename) option-map))
