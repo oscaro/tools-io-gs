@@ -6,8 +6,11 @@
 
 ### Changed
 
-
 ### Fixed
+
+## [0.1.21] - 2025-10-24
+### Changed
+* Bump clj-gcloud-storage 0.251-2.0, tools-io 0.3.42
 
 ## [0.1.21] - 2025-05-23
 ### Changed
