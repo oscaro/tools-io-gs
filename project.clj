@@ -4,8 +4,8 @@
   :license {:name "Eclipse Public License"
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.11.4"]
-                 [com.oscaro/clj-gcloud-storage "0.240-3.0"]
-                 [com.oscaro/tools-io "0.3.41"]]
+                 [com.oscaro/clj-gcloud-storage "0.251-2.0"]
+                 [com.oscaro/tools-io "0.3.42"]]
   :deploy-repositories [["snapshots" {:url "https://clojars.org/repo"
                                       :username :env/clojars_username
                                       :password :env/clojars_password
