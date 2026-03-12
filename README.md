@@ -1,4 +1,4 @@
-# tools-io-gs [API Docs](https://cljdoc.org/d/com.oscaro/tools-io-gs/0.1.6/doc/readme) [![cljdoc badge](https://cljdoc.org/badge/com.oscaro/tools-io-gs)](https://cljdoc.org/d/com.oscaro/tools-io-gs/CURRENT)
+# tools-io-gs [![cljdoc badge](https://cljdoc.org/badge/com.oscaro/tools-io-gs)](https://cljdoc.org/d/com.oscaro/tools-io-gs/CURRENT)
 
 Google Storage support for [`tools.io`](https://github.com/oscaro/tools-io).
 

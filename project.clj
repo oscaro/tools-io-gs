@@ -5,7 +5,7 @@
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.11.4"]
                  [com.oscaro/clj-gcloud-storage "0.251-2.0"]
-                 [com.oscaro/tools-io "0.3.42"]]
+                 [com.oscaro/tools-io "0.3.43"]]
   :deploy-repositories [["snapshots" {:url "https://clojars.org/repo"
                                       :username :env/clojars_username
                                       :password :env/clojars_password
@@ -26,4 +26,4 @@
   :plugins [[lein-shell "0.5.0"]]
   :profiles {:dev {:global-vars    {*warn-on-reflection* true}
                    :plugins        [[lein-codox "0.10.8"]]
-                   :dependencies   [[org.clojure/tools.namespace "1.5.0"]]}})
+                   :dependencies   [[org.clojure/tools.namespace "1.5.1"]]}})
