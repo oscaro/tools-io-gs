@@ -8,9 +8,11 @@
                           mk-output-stream
                           list-files
                           list-dirs
+                          exists?
                           sizeof]])
   (:import java.io.FileNotFoundException
-           com.google.cloud.storage.Blob))
+           java.time.Instant
+           (com.google.cloud.storage Blob BlobId Storage Storage$BlobWriteOption)))
 
 
 (defn- gs-file?
@@ -33,10 +35,35 @@
     (catch NullPointerException _ nil)))
 
 
+(defn- ->versioned-blob-id
+  "Returns the blob id of `uri`, pinned to `generation` when given."
+  [uri generation]
+  (when-let [^BlobId id (->gs-blob-id uri)]
+    (if generation
+      (BlobId/of (.getBucket id) (.getName id) (long generation))
+      id)))
+
+
+(defn object-meta
+  "Returns the metadata of the object at `uri`, or nil if there is none.
+
+  Keys: `:generation`, `:size` in bytes, `:crc32c` (base64, as Cloud Storage
+  reports it) and `:created-at`, the instant this generation was written.
+
+  With `:generation` in `options`, returns that generation's metadata, or nil
+  once it is no longer live (unless the bucket keeps noncurrent versions)."
+  [uri & [options]]
+  (when-let [^Blob blob (some->> (->versioned-blob-id uri (:generation options))
+                                 (gs/get-blob (mk-client options)))]
+    {:generation (.getGeneration blob)
+     :size       (.getSize blob)
+     :crc32c     (.getCrc32c blob)
+     :created-at (Instant/ofEpochMilli (.getCreateTime blob))}))
+
+
 (defmethod mk-input-stream :gs
   [filename & [options]]
-  (let [stream (some->> filename
-                        ->gs-blob-id
+  (let [stream (some->> (->versioned-blob-id filename (:generation options))
                         (gs/get-blob (mk-client options))
                         gs/read-channel
                         gs/->input-stream)]
@@ -61,9 +88,11 @@
                      content-language    (assoc :content-language content-language)
                      cache-control       (assoc :cache-control cache-control)
                      metadata            (assoc :metadata metadata))]
-    {:stream (-> (gs/create-blob-writer
-                  (mk-client options)
-                  (gs/blob-info (gs/->blob-id filename) option-map))
+    {:stream (-> (.writer ^Storage (mk-client options)
+                          (gs/blob-info (gs/->blob-id filename) option-map)
+                          (into-array Storage$BlobWriteOption
+                                      (when-let [generation (:if-generation-match options)]
+                                        [(Storage$BlobWriteOption/generationMatch (long generation))])))
                  gs/->output-stream)}))
 
 
@@ -84,6 +113,11 @@
        (map (fn [blob]
               (let [{:keys [blob-id]} (->clj blob)]
                 (str "gs://" (:bucket blob-id) "/" (:name blob-id))))))))
+
+
+(defmethod exists? :gs
+  [path & [options]]
+  (some? (object-meta path options)))
 
 
 (defmethod sizeof :gs

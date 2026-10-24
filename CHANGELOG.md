@@ -3,6 +3,10 @@
 ## [Unreleased]
 
 ### Added
+* `object-meta`: an object's generation, size, CRC32C and creation time.
+* `:generation` input option: read that generation of an object.
+* `:if-generation-match` output option: write only if the object's live generation matches (0: only if it does not exist).
+* `exists?` on `gs://` paths.
 
 ### Changed
 
