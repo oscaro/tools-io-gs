@@ -11,6 +11,7 @@
 ### Changed
 
 ### Fixed
+* `list-dirs` lists one level, not recursively, when given options (a `:storage` client…).
 
 ## [0.1.23] - 2026-03-21
 ### Changed

@@ -109,7 +109,7 @@
   (let [directory (if (= (-> path seq last) \/) path
                     (str path "/"))]
     (->> (gs/ls (mk-client options) directory
-                (or options {:current-directory "/"}))
+                (merge {:current-directory "/"} options))
        (map (fn [blob]
               (let [{:keys [blob-id]} (->clj blob)]
                 (str "gs://" (:bucket blob-id) "/" (:name blob-id))))))))
