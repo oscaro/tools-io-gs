@@ -1,6 +1,5 @@
 (ns tools.io.gs
   (:require
-   [clj-gcloud.coerce :refer [->clj]]
    [clj-gcloud.storage :as gs]
    [clojure.string :as str]
    [tools.io.core :refer [register-file-pred!
@@ -96,23 +95,25 @@
                  gs/->output-stream)}))
 
 
+(defn- blob->uri
+  [^Blob blob]
+  (str "gs://" (.getBucket blob) "/" (.getName blob)))
+
+
 (defmethod list-files :gs
   [path & [options]]
   (->> (gs/ls (mk-client options) path (or options {}))
-       (map (fn [blob]
-              (let [{:keys [blob-id]} (->clj blob)]
-                (str "gs://" (:bucket blob-id) "/" (:name blob-id)))))))
+       (map blob->uri)))
 
 
 (defmethod list-dirs :gs
   [path & [options]]
-  (let [directory (if (= (-> path seq last) \/) path
-                    (str path "/"))]
+  (let [path      (str path)
+        directory (if (str/ends-with? path "/") path (str path "/"))]
     (->> (gs/ls (mk-client options) directory
-                (merge {:current-directory "/"} options))
-       (map (fn [blob]
-              (let [{:keys [blob-id]} (->clj blob)]
-                (str "gs://" (:bucket blob-id) "/" (:name blob-id))))))))
+                (assoc options :current-directory true))
+         (filter #(.isDirectory ^Blob %))
+         (map blob->uri))))
 
 
 (defmethod exists? :gs

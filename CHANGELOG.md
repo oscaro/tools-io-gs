@@ -12,6 +12,7 @@
 
 ### Fixed
 * `list-dirs` lists one level, not recursively, when given options (a `:storage` client…).
+* `list-dirs` returns only directories, not the objects directly under the path.
 
 ## [0.1.23] - 2026-03-21
 ### Changed
