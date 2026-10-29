@@ -3,10 +3,16 @@
 ## [Unreleased]
 
 ### Added
+* `object-meta`: an object's generation, size, CRC32C and creation time.
+* `:generation` input option: read that generation of an object.
+* `:if-generation-match` output option: write only if the object's live generation matches (0: only if it does not exist).
+* `exists?` on `gs://` paths.
 
 ### Changed
 
 ### Fixed
+* `list-dirs` lists one level, not recursively, when given options (a `:storage` client…).
+* `list-dirs` returns only directories, not the objects directly under the path.
 
 ## [0.1.23] - 2026-03-21
 ### Changed

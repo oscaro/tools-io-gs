@@ -39,6 +39,16 @@ Latest release from Clojars: [![Clojars Project](https://img.shields.io/clojars/
 
 (sizeof "gs:/foo/bar") ;; => 8293
 
+; object metadata, nil when absent
+(tools.io.gs/object-meta "gs://bucket/sample.jsons.gz")
+; => {:generation 1792702957806998, :size 31, :crc32c "hoYO7g==",
+;     :created-at #inst "2026-10-22T21:02:37.810Z"}
+
+; read one generation; fails once it is overwritten (on unversioned buckets)
+(read-jsons-file "gs://bucket/sample.jsons.gz" {:generation 1792702957806998})
+
+; write only if absent (0), or only over a given generation
+(write-edn-file "gs://bucket/out.edn" {:if-generation-match 0} {:a 1})
 ```
 
 ## License
